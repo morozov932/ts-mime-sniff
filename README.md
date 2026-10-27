@@ -16,3 +16,10 @@ Filename extensions lie. A `.png` can be a JPEG and an upload form that trusts t
 ## Edge cases
 
 The sniffer reads at most 12 bytes, matching the longest supported magic (PDF). Pass fewer bytes and the missing positions are treated as zeros, so a prefix shorter than a magic will not spuriously match. An empty input, or bytes that match no known magic, return `application/octet-stream` — not `null`. Throw a `TypeError` if you pass something other than a `Uint8Array`.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
