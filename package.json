@@ -1,6 +1,6 @@
 {
   "name": "ts-mime-sniff",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Detect MIME type from leading file bytes, ignoring the filename",
   "type": "module",
   "main": "src/index.js",
